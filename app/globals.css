@@ -1,26 +1,151 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Brand Colors */
+  --color-charcoal: #2C2C2C;
+  --color-lime: #7CB342;
+  --color-lime-dark: #558B2F;
+  --color-lime-light: #AED581;
+  --color-warm: #FAF9F6;
+  --color-warm-dark: #F0EDE6;
+  --color-grey: #757575;
+  --color-grey-light: #E0E0E0;
+  --color-grey-dark: #424242;
+  --color-amber: #FFC107;
+  --color-amber-dark: #FF8F00;
+  --color-danger: #E53935;
+  --color-danger-dark: #B71C1C;
+  --color-success: #43A047;
+  --color-info: #1E88E5;
+
+  /* Typography — 18px minimum body */
+  --font-size-xs: 0.875rem;    /* 14px */
+  --font-size-sm: 1rem;        /* 16px */
+  --font-size-base: 1.125rem;  /* 18px — minimum body */
+  --font-size-lg: 1.25rem;     /* 20px */
+  --font-size-xl: 1.5rem;      /* 24px */
+  --font-size-2xl: 1.875rem;   /* 30px */
+  --font-size-3xl: 2.25rem;    /* 36px */
+  --font-size-4xl: 3rem;       /* 48px */
+  --font-size-5xl: 3.75rem;    /* 60px */
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Global resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FAF9F6;
+  color: #2C2C2C;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-size: 1.125rem; /* 18px minimum */
+  line-height: 1.75rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Skip to content link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #2C2C2C;
+  color: #FAF9F6;
+  padding: 8px 16px;
+  z-index: 9999;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0EDE6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9E9E9E;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #757575;
+}
+
+/* Focus ring — lime for brand consistency */
+:focus-visible {
+  outline: 2px solid #7CB342;
+  outline-offset: 2px;
+}
+
+/* No focus ring on mouse clicks */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Prevent layout shift for images */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Horizontal scroll containers */
+.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #9E9E9E #F0EDE6;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Page transition loading bar */
+@keyframes loading-bar {
+  0%   { transform: translateX(-100%); }
+  50%  { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-loading-bar {
+  animation: loading-bar 1s ease-in-out infinite;
+  width: 40%;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
