@@ -66,7 +66,7 @@ function ProductsContent() {
 
   return (
     <div className="min-h-screen bg-warm">
-      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-6">
+      <div className="max-w-screen-2xl mx-auto px-4 lg:px-8 py-6">
 
         {/* Breadcrumb */}
         <Breadcrumb
@@ -145,7 +145,7 @@ function ProductsContent() {
 
         <div className="flex gap-6">
           {/* Sidebar — desktop */}
-          <div className="hidden lg:block w-64 flex-shrink-0">
+          <div className="hidden lg:block w-52 flex-shrink-0">
             <FilterSidebar filters={filters} onChange={setFilters} onReset={resetFilters} />
           </div>
 
@@ -216,7 +216,7 @@ function ProductsContent() {
                 }
               />
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5">
                 {filtered.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}

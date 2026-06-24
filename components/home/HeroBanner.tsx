@@ -1,97 +1,126 @@
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
+import { ArrowRight, MessageCircle } from "lucide-react"
 import { buildGeneralEnquiryURL } from "@/lib/utils/whatsapp"
 
-function LivingRoomIllustration() {
+function PremiumSofaRender() {
   return (
     <svg
-      viewBox="0 0 900 360"
+      viewBox="0 0 900 420"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       className="w-full"
     >
-      {/* Floor */}
-      <rect x="0" y="278" width="900" height="82" fill="#E8DDD0" />
-      {/* Rug */}
-      <ellipse cx="450" cy="312" rx="290" ry="48" fill="#D4BFA0" />
-      <ellipse cx="450" cy="312" rx="240" ry="38" fill="none" stroke="#C4AD8E" strokeWidth="3" opacity="0.6" />
-      <ellipse cx="450" cy="312" rx="160" ry="26" fill="none" stroke="#C4AD8E" strokeWidth="2" opacity="0.5" />
+      <defs>
+        {/* Main fabric — warm cream, lit from upper-left */}
+        <linearGradient id="hb-back" x1="0.1" y1="0" x2="0.9" y2="1">
+          <stop offset="0%" stopColor="#F8F0DC" />
+          <stop offset="45%" stopColor="#EDE0C2" />
+          <stop offset="100%" stopColor="#C8B088" />
+        </linearGradient>
+        {/* Seat — slightly cooler because lit from top */}
+        <linearGradient id="hb-seat" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#F2E8D0" />
+          <stop offset="100%" stopColor="#D4C4A0" />
+        </linearGradient>
+        {/* Arm outer face — side-lit */}
+        <linearGradient id="hb-arm-l" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#F0E6CC" />
+          <stop offset="100%" stopColor="#A89060" />
+        </linearGradient>
+        <linearGradient id="hb-arm-r" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#D8C8A0" />
+          <stop offset="100%" stopColor="#907850" />
+        </linearGradient>
+        {/* Arm top surface */}
+        <linearGradient id="hb-arm-top" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#F8F4E8" />
+          <stop offset="100%" stopColor="#D4C8A4" />
+        </linearGradient>
+        {/* Plinth / base */}
+        <linearGradient id="hb-base" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#D8C8A0" />
+          <stop offset="100%" stopColor="#B0984C" stopOpacity="0.6" />
+        </linearGradient>
+        {/* Leg — dark walnut */}
+        <linearGradient id="hb-leg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#3C2810" />
+          <stop offset="100%" stopColor="#1A0E06" />
+        </linearGradient>
+        {/* Ambient ground shadow */}
+        <radialGradient id="hb-shadow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="rgba(0,0,0,0.55)" />
+          <stop offset="100%" stopColor="rgba(0,0,0,0)" />
+        </radialGradient>
+        {/* Subtle floor reflection */}
+        <linearGradient id="hb-reflect" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#E8D8B8" stopOpacity="0.14" />
+          <stop offset="100%" stopColor="#E8D8B8" stopOpacity="0" />
+        </linearGradient>
+        <filter id="hb-blur-shadow">
+          <feGaussianBlur stdDeviation="14" />
+        </filter>
+      </defs>
 
-      {/* Sofa back */}
-      <rect x="185" y="192" width="530" height="90" rx="18" fill="#6B8A50" />
-      {/* Sofa seat */}
-      <rect x="185" y="262" width="530" height="62" rx="10" fill="#7CB342" />
-      {/* Left arm */}
-      <rect x="160" y="210" width="48" height="114" rx="14" fill="#5E7945" />
-      {/* Right arm */}
-      <rect x="692" y="210" width="48" height="114" rx="14" fill="#5E7945" />
-      {/* Back cushion dividers */}
-      <rect x="360" y="195" width="3" height="90" rx="1.5" fill="#5E7945" />
-      <rect x="537" y="195" width="3" height="90" rx="1.5" fill="#5E7945" />
-      {/* Seat dividers */}
-      <rect x="360" y="265" width="3" height="55" rx="1.5" fill="#6A9E38" />
-      <rect x="537" y="265" width="3" height="55" rx="1.5" fill="#6A9E38" />
-      {/* Sofa legs */}
-      <rect x="208" y="322" width="18" height="18" rx="4" fill="#4A3728" />
-      <rect x="674" y="322" width="18" height="18" rx="4" fill="#4A3728" />
-      <rect x="358" y="322" width="14" height="14" rx="3" fill="#4A3728" />
-      <rect x="528" y="322" width="14" height="14" rx="3" fill="#4A3728" />
+      {/* Ground shadow */}
+      <ellipse cx="450" cy="410" rx="330" ry="18" fill="url(#hb-shadow)" filter="url(#hb-blur-shadow)" />
 
-      {/* Coffee table top */}
-      <rect x="318" y="320" width="264" height="14" rx="7" fill="#B08060" />
-      {/* Coffee table body */}
-      <rect x="328" y="332" width="244" height="40" rx="7" fill="#9A6E4E" />
-      {/* Coffee table legs */}
-      <rect x="343" y="334" width="12" height="38" rx="3" fill="#7D5A3C" />
-      <rect x="545" y="334" width="12" height="38" rx="3" fill="#7D5A3C" />
-      {/* Items on coffee table */}
-      <ellipse cx="398" cy="323" rx="28" ry="6" fill="#C8A878" opacity="0.85" />
-      <rect x="428" y="317" width="65" height="8" rx="3" fill="#A8B8C8" opacity="0.8" />
-      <circle cx="512" cy="322" r="9" fill="#D4956A" opacity="0.75" />
+      {/* ── LEFT ARM ── */}
+      {/* Arm face */}
+      <path d="M62,165 L62,365 Q62,380 78,380 L118,380 Q134,380 134,365 L134,190 Q134,170 118,165 Z" fill="url(#hb-arm-l)" />
+      {/* Arm top */}
+      <path d="M60,165 Q60,150 98,148 Q136,146 136,165 L134,172 Q134,158 98,156 Q62,154 62,168 Z" fill="url(#hb-arm-top)" />
+      {/* Arm inner shadow (where it meets back) */}
+      <rect x="130" y="168" width="8" height="196" rx="2" fill="rgba(0,0,0,0.12)" />
 
-      {/* Side table left */}
-      <rect x="62" y="292" width="90" height="12" rx="5" fill="#B08060" />
-      <rect x="70" y="302" width="74" height="28" rx="5" fill="#9A6E4E" />
-      {/* Lamp pole */}
-      <rect x="102" y="175" width="8" height="117" rx="3" fill="#C4A060" />
-      {/* Lamp shade */}
-      <polygon points="78,180 130,180 120,140 88,140" fill="#FFF8DC" />
-      <ellipse cx="106" cy="180" rx="26" ry="8" fill="#F5ECC8" opacity="0.7" />
-      {/* Lamp glow */}
-      <ellipse cx="106" cy="177" rx="44" ry="20" fill="#FFFDE7" opacity="0.22" />
+      {/* ── RIGHT ARM ── */}
+      <path d="M838,165 L838,365 Q838,380 822,380 L782,380 Q766,380 766,365 L766,190 Q766,170 782,165 Z" fill="url(#hb-arm-r)" />
+      <path d="M840,165 Q840,150 802,148 Q764,146 764,165 L766,172 Q766,158 802,156 Q838,154 838,168 Z" fill="url(#hb-arm-top)" />
+      <rect x="762" y="168" width="8" height="196" rx="2" fill="rgba(0,0,0,0.08)" />
 
-      {/* Side table right */}
-      <rect x="748" y="292" width="90" height="12" rx="5" fill="#B08060" />
-      <rect x="756" y="302" width="74" height="28" rx="5" fill="#9A6E4E" />
-      {/* Vase */}
-      <rect x="772" y="250" width="18" height="44" rx="7" fill="#7B9E9A" />
-      <ellipse cx="781" cy="250" rx="14" ry="9" fill="#8EB0AC" />
-      {/* Vase leaves */}
-      <ellipse cx="768" cy="237" rx="18" ry="13" fill="#5A8C50" transform="rotate(-25, 768, 237)" />
-      <ellipse cx="794" cy="235" rx="18" ry="13" fill="#4A7C40" transform="rotate(25, 794, 235)" />
-      <ellipse cx="781" cy="228" rx="14" ry="18" fill="#6AA056" />
+      {/* ── BACK CUSHIONS ── */}
+      <rect x="130" y="128" width="640" height="198" rx="14" fill="url(#hb-back)" />
 
-      {/* Large floor plant */}
-      <rect x="832" y="258" width="26" height="60" rx="6" fill="#6D4C35" />
-      <ellipse cx="845" cy="238" rx="40" ry="48" fill="#5A8C50" />
-      <ellipse cx="822" cy="258" rx="24" ry="32" fill="#4A7C40" />
-      <ellipse cx="868" cy="255" rx="24" ry="30" fill="#4A7C40" />
-      <ellipse cx="845" cy="215" rx="22" ry="28" fill="#6AA056" />
-      <path d="M827,258 L863,258 L860,280 L830,280 Z" fill="#6D4C35" />
+      {/* Cushion 1 (left) */}
+      <rect x="136" y="134" width="204" height="186" rx="10" fill="none" stroke="#C8B080" strokeWidth="1" opacity="0.5" />
+      <rect x="140" y="138" width="196" height="178" rx="8" fill="rgba(255,250,235,0.07)" />
+      {/* Cushion 1 highlight (lit upper-left) */}
+      <rect x="142" y="140" width="80" height="40" rx="6" fill="rgba(255,250,235,0.1)" />
 
-      {/* Wall art frame */}
-      <rect x="372" y="80" width="156" height="118" rx="7" fill="white" stroke="#D4C8B8" strokeWidth="2" />
-      <rect x="380" y="88" width="140" height="102" rx="5" fill="#F5EEE4" />
-      {/* Abstract art content */}
-      <ellipse cx="428" cy="139" rx="30" ry="38" fill="#E8D5C0" opacity="0.85" />
-      <ellipse cx="463" cy="123" rx="24" ry="32" fill="#D4B898" opacity="0.8" />
-      <ellipse cx="492" cy="149" rx="26" ry="22" fill="#C9A87A" opacity="0.65" />
+      {/* Cushion 2 (center) */}
+      <rect x="348" y="134" width="204" height="186" rx="10" fill="none" stroke="#C8B080" strokeWidth="1" opacity="0.5" />
+      <rect x="352" y="138" width="196" height="178" rx="8" fill="rgba(255,250,235,0.04)" />
 
-      {/* Small painting right */}
-      <rect x="618" y="108" width="80" height="60" rx="5" fill="white" stroke="#D4C8B8" strokeWidth="1.5" />
-      <rect x="624" y="114" width="68" height="48" rx="4" fill="#F0F4F8" />
-      <ellipse cx="658" cy="138" rx="22" ry="18" fill="#C5D8E8" opacity="0.7" />
-      <ellipse cx="670" cy="130" rx="14" ry="16" fill="#A8C4D8" opacity="0.6" />
+      {/* Cushion 3 (right) */}
+      <rect x="560" y="134" width="204" height="186" rx="10" fill="none" stroke="#C8B080" strokeWidth="1" opacity="0.5" />
+      <rect x="564" y="138" width="196" height="178" rx="8" fill="rgba(0,0,0,0.04)" />
+
+      {/* Back-cushion top-edge highlight */}
+      <rect x="130" y="128" width="640" height="6" rx="3" fill="rgba(255,250,235,0.3)" />
+
+      {/* ── SEAT ── */}
+      <rect x="130" y="308" width="640" height="82" rx="10" fill="url(#hb-seat)" />
+
+      {/* Seat cushion dividers */}
+      <rect x="343" y="312" width="2.5" height="74" rx="1.25" fill="rgba(0,0,0,0.18)" />
+      <rect x="556" y="312" width="2.5" height="74" rx="1.25" fill="rgba(0,0,0,0.18)" />
+
+      {/* Seat front-edge roll */}
+      <rect x="130" y="378" width="640" height="12" rx="6" fill="rgba(0,0,0,0.1)" />
+
+      {/* Seat-back junction shadow */}
+      <rect x="130" y="304" width="640" height="14" rx="0" fill="rgba(0,0,0,0.15)" />
+
+      {/* ── BASE / PLINTH ── */}
+      <rect x="118" y="376" width="664" height="22" rx="6" fill="url(#hb-base)" />
+
+      {/* ── LEGS (walnut, angled slightly) ── */}
+      <rect x="145" y="396" width="20" height="32" rx="4" fill="url(#hb-leg)" />
+      <rect x="735" y="396" width="20" height="32" rx="4" fill="url(#hb-leg)" />
+      <rect x="340" y="396" width="17" height="28" rx="3.5" fill="url(#hb-leg)" />
+      <rect x="543" y="396" width="17" height="28" rx="3.5" fill="url(#hb-leg)" />
+
+      {/* ── FLOOR REFLECTION ── */}
+      <rect x="118" y="428" width="664" height="40" rx="0" fill="url(#hb-reflect)" transform="scale(1,-1) translate(0,-856)" />
     </svg>
   )
 }
@@ -100,46 +129,68 @@ export function HeroBanner() {
   const waUrl = buildGeneralEnquiryURL()
 
   return (
-    <section className="bg-[#f5f5f7]" aria-label="Homepage hero">
-      {/* Top text band — Apple Store style */}
-      <div className="max-w-7xl mx-auto px-4 lg:px-6 pt-12 lg:pt-16 pb-6">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
-          {/* Left: brand name */}
-          <div>
-            <h1 className="text-5xl lg:text-7xl font-bold text-charcoal tracking-tight leading-none">
-              Finotti.
-            </h1>
-            <p className="text-base text-grey mt-2 hidden lg:block">50 years of furniture excellence</p>
-          </div>
-          {/* Right: tagline + links */}
-          <div className="lg:text-right max-w-sm">
-            <p className="text-xl lg:text-2xl font-semibold text-charcoal leading-snug mb-3">
-              The best way to furnish<br className="hidden lg:block" /> your home.
-            </p>
-            <div className="flex flex-col gap-1.5">
-              <Link
-                href="/products"
-                className="inline-flex items-center lg:justify-end gap-0.5 text-lime font-semibold hover:underline focus-visible:outline-none"
-              >
-                Shop the collection <ChevronRight size={18} strokeWidth={2.5} />
-              </Link>
-              <Link
-                href={waUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center lg:justify-end gap-0.5 text-lime font-semibold hover:underline focus-visible:outline-none"
-              >
-                Talk to a specialist <ChevronRight size={18} strokeWidth={2.5} />
-              </Link>
-            </div>
-          </div>
+    <section className="relative bg-[#0c0c0c] overflow-hidden" aria-label="Homepage hero">
+
+      {/* Radial spotlight from above-center */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 90% 70% at 50% -5%, rgba(180,165,140,0.10) 0%, transparent 65%)",
+        }}
+      />
+
+      {/* Top text area */}
+      <div className="relative max-w-screen-xl mx-auto px-4 lg:px-10 pt-20 lg:pt-32 pb-6 text-center">
+        {/* Brand eyebrow */}
+        <p
+          className="text-xs font-bold tracking-[0.38em] uppercase mb-8"
+          style={{ color: "#7CB342" }}
+        >
+          Finotti Furniture Mall
+        </p>
+
+        {/* Primary headline */}
+        <h1 className="font-bold text-white leading-[0.92] tracking-tight mb-6">
+          <span className="block text-[clamp(56px,10vw,110px)]">Live</span>
+          <span className="block text-[clamp(56px,10vw,110px)] text-white/80">beautifully.</span>
+        </h1>
+
+        {/* Sub-copy */}
+        <p className="text-white/45 text-base max-w-xs mx-auto mb-10 leading-relaxed">
+          Premium furniture for Malaysian homes.<br />
+          50 years of trusted craftsmanship.
+        </p>
+
+        {/* CTAs — pill style */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-2 bg-white text-[#0c0c0c] px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-[#f5f5f5] transition-colors"
+          >
+            Shop Now <ArrowRight size={16} />
+          </Link>
+          <Link
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm text-white border border-white/20 hover:border-white/50 transition-colors"
+          >
+            <MessageCircle size={16} /> Talk to a Specialist
+          </Link>
         </div>
       </div>
 
-      {/* Living room illustration */}
-      <div className="max-w-7xl mx-auto overflow-hidden">
-        <LivingRoomIllustration />
+      {/* Product render — large, centered */}
+      <div className="relative max-w-screen-lg mx-auto px-4 lg:px-8 mt-6">
+        <PremiumSofaRender />
       </div>
+
+      {/* Bottom fade transition */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        style={{ background: "linear-gradient(to top, #f5f5f7, transparent)" }}
+      />
     </section>
   )
 }
